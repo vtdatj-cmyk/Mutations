@@ -1,0 +1,90 @@
+local MutationsConfig = {}
+
+MutationsConfig.List = {
+    {
+        ["Name"] = "Gold",
+        ["Chance"] = 0.13,
+        ["Multiplier"] = 1.5,
+        ["Texture"] = "Gold",
+        ["Color"] = Color3.fromRGB(255, 205, 40),
+        ["Gradient"] = ColorSequence.new(Color3.fromRGB(255, 235, 120), Color3.fromRGB(230, 160, 20)),
+        ["Vignette"] = { ["Outer"] = Color3.fromRGB(255, 120, 0), ["Inner"] = Color3.fromRGB(255, 235, 90) },
+        ["Particles"] = { ["Rate"] = 3, ["Size"] = 0.35, ["LightEmission"] = 0.3, ["Color"] = Color3.fromRGB(255, 191, 0) }
+    },
+    {
+        ["Name"] = "Diamond",
+        ["Chance"] = 0.04,
+        ["Multiplier"] = 3,
+        ["Texture"] = "Diamond",
+        ["Color"] = Color3.fromRGB(90, 225, 255),
+        ["Gradient"] = ColorSequence.new(Color3.fromRGB(200, 245, 255), Color3.fromRGB(40, 170, 255)),
+        ["Vignette"] = { ["Outer"] = Color3.fromRGB(20, 90, 255), ["Inner"] = Color3.fromRGB(160, 230, 255) },
+        ["Particles"] = { ["Rate"] = 3.5, ["Size"] = 0.35, ["LightEmission"] = 0.3, ["Color"] = Color3.fromRGB(0, 213, 255) }
+    },
+    {
+        ["Name"] = "Emerald",
+        ["Chance"] = 0.02,
+        ["Multiplier"] = 5,
+        ["Texture"] = "Emerald",
+        ["Color"] = Color3.fromRGB(80, 255, 120),
+        ["Gradient"] = ColorSequence.new(Color3.fromRGB(170, 255, 190), Color3.fromRGB(20, 190, 80)),
+        ["Vignette"] = { ["Outer"] = Color3.fromRGB(0, 110, 45), ["Inner"] = Color3.fromRGB(140, 255, 170) },
+        ["Particles"] = { ["Rate"] = 4, ["Size"] = 0.35, ["LightEmission"] = 0.3, ["Color"] = Color3.fromRGB(77, 255, 0) }
+    },
+    {
+        ["Name"] = "Ruby",
+        ["Chance"] = 0.01,
+        ["Multiplier"] = 10,
+        ["Texture"] = "Ruby",
+        ["Color"] = Color3.fromRGB(255, 70, 100),
+        ["Gradient"] = ColorSequence.new(Color3.fromRGB(255, 170, 190), Color3.fromRGB(220, 20, 60)),
+        ["Vignette"] = { ["Outer"] = Color3.fromRGB(140, 0, 30), ["Inner"] = Color3.fromRGB(255, 120, 150) },
+        ["Particles"] = { ["Rate"] = 4.5, ["Size"] = 0.4, ["LightEmission"] = 0.3, ["Color"] = Color3.fromRGB(255, 0, 68) }
+    },
+    {
+        ["Name"] = "Rainbow",
+        ["Chance"] = 0.005,
+        ["Multiplier"] = 20,
+        ["Texture"] = "Rainbow",
+        ["Color"] = Color3.fromRGB(255, 255, 255),
+        ["Gradient"] = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 80, 80)),
+            ColorSequenceKeypoint.new(0.2, Color3.fromRGB(255, 200, 60)),
+            ColorSequenceKeypoint.new(0.4, Color3.fromRGB(120, 255, 120)),
+            ColorSequenceKeypoint.new(0.6, Color3.fromRGB(90, 220, 255)),
+            ColorSequenceKeypoint.new(0.8, Color3.fromRGB(150, 120, 255)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 120, 230))
+        }),
+        ["Vignette"] = { ["Speed"] = 1.2 },
+        ["Particles"] = { ["Rate"] = 6, ["Size"] = 0.45, ["LightEmission"] = 0.3 }
+    },
+    {
+        ["Name"] = "Champion",
+        ["Chance"] = 0,
+        ["Rollable"] = false,
+        ["Multiplier"] = 1.5,
+        ["Texture"] = "Gold",
+        ["Aura"] = "ChampionAura",
+        ["Color"] = Color3.fromRGB(214, 150, 255)
+    },
+    {
+        ["Name"] = "Lucid",
+        ["Chance"] = 0,
+        ["Rollable"] = false,
+        ["Multiplier"] = 1.75,
+        ["Texture"] = "Diamond",
+        ["Aura"] = "LucidAura",
+        ["Color"] = Color3.fromRGB(196, 150, 255)
+    }
+}
+
+MutationsConfig.ByName = {}
+for _, v in ipairs(MutationsConfig.List) do
+    MutationsConfig.ByName[v.Name] = v
+end
+
+function MutationsConfig.Get(name)
+    return name and MutationsConfig.ByName[name] or nil
+end
+
+return MutationsConfig
